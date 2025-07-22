@@ -118,27 +118,31 @@ export default function LashoraTryOn() {
   };
 
   return (
-    <div className="relative w-full max-w-xl mx-auto">
-      <video ref={videoRef} className="absolute top-0 left-0 w-full h-auto rounded-xl" autoPlay muted playsInline />
-      <canvas ref={canvasRef} width={640} height={480} className="absolute top-0 left-0 z-10" />
+    <div className="relative w-full max-w-5xl mx-auto px-4">
+      <div className="relative w-full aspect-video rounded-xl overflow-hidden">
+        <video ref={videoRef} className="absolute top-0 left-0 w-full h-full object-cover" autoPlay muted playsInline />
+        <canvas ref={canvasRef} width={640} height={480} className="absolute top-0 left-0 z-10" />
+      </div>
 
-      <div className="mt-96 flex justify-center gap-2 flex-wrap">
+      <div className="mt-8 flex flex-wrap justify-center gap-3">
         {lashStyles.map((name) => (
           <button
             key={name}
             onClick={() => setSelectedStyle(name)}
-            className={`px-3 py-1 rounded-full border ${selectedStyle === name ? "bg-black text-white" : "bg-white"}`}
+            className={`px-4 py-2 text-sm rounded-full border transition ${
+              selectedStyle === name ? "bg-black text-white" : "bg-white hover:bg-neutral-100"
+            }`}
           >
             {name}
           </button>
         ))}
       </div>
 
-      <div className="mt-4 text-center">
-        <p className="text-lg font-semibold">Selected: {selectedStyle}</p>
+      <div className="mt-6 text-center">
+        <p className="text-base font-medium">Selected Style: <strong>{selectedStyle}</strong></p>
         <button
           onClick={handleAddToBag}
-          className="mt-2 px-5 py-2 bg-black text-white rounded-full hover:bg-gray-800"
+          className="mt-3 px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800"
         >
           Add to Bag
         </button>
