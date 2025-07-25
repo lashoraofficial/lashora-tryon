@@ -1,0 +1,39 @@
+```javascript
+// filepath: c:\Users\Vita\lashora-tryon\src\App.jsx
+
+// ...inside onResults...
+const lashLeft = new window.Image();
+lashLeft.src = selected.leftPNG;
+lashLeft.onload = () => {
+  canvasCtx.save();
+  canvasCtx.translate(leftMid.x * canvasElement.width, leftMid.y * canvasElement.height);
+  canvasCtx.rotate(leftAngle);
+  canvasCtx.drawImage(
+    lashLeft,
+    -leftWidth / 2,
+    -leftHeight / 2,
+    leftWidth,
+    leftHeight
+  );
+  canvasCtx.restore();
+};
+if (lashLeft.complete) lashLeft.onload();
+
+const lashRight = new window.Image();
+lashRight.src = selected.rightPNG;
+lashRight.onload = () => {
+  canvasCtx.save();
+  canvasCtx.translate(rightMid.x * canvasElement.width, rightMid.y * canvasElement.height);
+  canvasCtx.rotate(rightAngle);
+  canvasCtx.drawImage(
+    lashRight,
+    -rightWidth / 2,
+    -rightHeight / 2,
+    rightWidth,
+    rightHeight
+  );
+  canvasCtx.restore();
+};
+if (lashRight.complete) lashRight.onload();
+// ...existing code...
+```
